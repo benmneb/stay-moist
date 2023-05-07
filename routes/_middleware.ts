@@ -2,12 +2,10 @@ import { MiddlewareHandlerContext } from "$fresh/server.ts";
 import { getCookies } from "$std/http/cookie.ts";
 import { redis } from "/lib/redis.ts";
 
-// TODO: THIS IS WRONG
 type User = {
   id: number;
-  name: string;
-  access_token: string;
   email: string;
+  // ...Supabase sends a lot more here that is never used
 };
 
 export type ServerState = {
@@ -33,6 +31,7 @@ export async function handler(
     }
 
     const user = JSON.parse(session!.toString())?.user;
+
     ctx.state.user = user;
   }
 

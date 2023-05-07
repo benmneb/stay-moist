@@ -3,9 +3,11 @@ import { Handlers, PageProps } from '$fresh/server.ts'
 import { render } from '$gfm'
 import IconArrowBack from 'https://deno.land/x/tabler_icons_tsx@0.0.3/tsx/arrow-back.tsx'
 import { Layout } from '../components/layout.tsx'
+import { Post } from '../utils/posts.ts'
+import { ServerState } from './_middleware.ts'
 import { getPost } from '/utils/posts.ts'
 
-export const handler: Handlers<any> = {
+export const handler: Handlers = {
 	async GET(_req, ctx) {
 		const post = await getPost(ctx.params.post)
 		if (post === null) return ctx.renderNotFound()
@@ -13,8 +15,13 @@ export const handler: Handlers<any> = {
 	},
 }
 
-export default function PostPage(props: PageProps<any>) {
-	const { post, state } = props.data
+interface PostPageProps {
+	post: Post
+	state: ServerState
+}
+
+export default function PostPage({ data }: PageProps<PostPageProps>) {
+	const { post, state } = data
 
 	return (
 		<>

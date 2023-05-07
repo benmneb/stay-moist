@@ -1,6 +1,7 @@
 import { Head } from '$fresh/runtime.ts'
 import { Handlers, PageProps } from '$fresh/server.ts'
 import { setCookie } from '$std/http/cookie.ts'
+import { AuthError, Session, User } from 'supabase'
 import { Layout } from '../components/layout.tsx'
 import { supabase } from '../lib/supabase.ts'
 import { ServerState } from './_middleware.ts'
@@ -10,11 +11,11 @@ interface Props {
 	state: ServerState
 }
 
-export const handler: Handlers<Props> = {
-	async GET(req, ctx: any) {
+export const handler: Handlers = {
+	async GET(req, ctx) {
 		return await ctx.render({ state: ctx.state })
 	},
-	async POST(req, ctx: any) {
+	async POST(req, ctx) {
 		const url = new URL(req.url)
 		const form = await req.formData()
 		const email = form.get('email')?.toString() || ''
@@ -25,16 +26,19 @@ export const handler: Handlers<Props> = {
 			password,
 		})
 
-		function handleSuccess(data: any) {
-			const { session, user } = data
+		function handleSuccess(data: {
+			user: User | null
+			session: Session | null
+		}) {
+			const { user, session } = data
 
 			const headers = new Headers()
 			headers.set('location', '/')
 
 			setCookie(headers, {
 				name: 'auth',
-				value: session.access_token,
-				maxAge: session.expires_in,
+				value: session!.access_token,
+				maxAge: session!.expires_in,
 				sameSite: 'Lax',
 				domain: url.hostname,
 				path: '/',
@@ -47,9 +51,9 @@ export const handler: Handlers<Props> = {
 			})
 		}
 
-		async function handleError(error: any) {
-			console.log('handleError error', error)
-			return await ctx.render({ state: ctx.state, error: error.message })
+		async function handleError(error: AuthError) {
+			const { message } = error!
+			return await ctx.render({ state: ctx.state, error: message })
 		}
 
 		if (error) {

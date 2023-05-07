@@ -10,7 +10,7 @@ interface PageData {
 	state: ServerState
 }
 
-export const handler: Handlers<PageData> = {
+export const handler: Handlers = {
 	async GET(_, ctx) {
 		const posts = await getPosts()
 		return ctx.render({ posts, state: ctx.state })
