@@ -2,6 +2,7 @@ import { Head } from '$fresh/runtime.ts'
 import { Handlers, PageProps } from '$fresh/server.ts'
 import { Layout } from '../components/layout.tsx'
 import PostCard from '../components/post-card.tsx'
+import AddPost from '../islands/add-post.tsx'
 import { Post, getPosts } from '../utils/posts.ts'
 import { ServerState } from './_middleware.ts'
 
@@ -19,6 +20,7 @@ export const handler: Handlers = {
 
 export default function Home({ data }: PageProps<PageData>) {
 	const { posts, state } = data
+	const isAuthed = !!state?.user
 
 	return (
 		<>
@@ -27,6 +29,7 @@ export default function Home({ data }: PageProps<PageData>) {
 			</Head>
 			<Layout state={state}>
 				<main class="p-4 mx-auto max-w-screen-md">
+					<AddPost isAuthed={isAuthed} />
 					<div class="mt-0">
 						{posts.map((post, i) => (
 							<PostCard post={post} isFirst={i === 0} />

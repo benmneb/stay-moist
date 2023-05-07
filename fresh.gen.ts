@@ -8,7 +8,8 @@ import * as $1 from "./routes/_middleware.ts";
 import * as $2 from "./routes/api/log-out.ts";
 import * as $3 from "./routes/index.tsx";
 import * as $4 from "./routes/log-in.tsx";
-import * as $$0 from "./islands/vote-buttons.tsx";
+import * as $$0 from "./islands/add-post.tsx";
+import * as $$1 from "./islands/vote-buttons.tsx";
 
 const manifest = {
   routes: {
@@ -19,7 +20,8 @@ const manifest = {
     "./routes/log-in.tsx": $4,
   },
   islands: {
-    "./islands/vote-buttons.tsx": $$0,
+    "./islands/add-post.tsx": $$0,
+    "./islands/vote-buttons.tsx": $$1,
   },
   baseUrl: import.meta.url,
   config,
