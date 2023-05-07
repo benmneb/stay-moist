@@ -14,7 +14,7 @@ export function Layout({ children, state }: Props) {
 	return (
 		<>
 			<header class="max-w-screen-md mx-auto p-4 flex flex-row justify-between">
-				<a href="/" class="flex flex-row items-center w-max gap-2">
+				<a href="/" class="flex flex-row items-center w-max gap-4">
 					<img
 						src="/logo.webp"
 						class="w-24 h-24 rounded-full"
@@ -28,7 +28,7 @@ export function Layout({ children, state }: Props) {
 				<div class="flex justify-center items-center gap-2">
 					{isAuthed ? (
 						<>
-							{state?.user?.email}
+							<span>{state?.user?.email}</span>
 							<a href="api/log-out">
 								<button
 									type="button"
