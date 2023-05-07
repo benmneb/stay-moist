@@ -32,7 +32,7 @@ export default function Home({ data }: PageProps<PageData>) {
 					<AddPost isAuthed={isAuthed} />
 					<div class="mt-0">
 						{posts.map((post, i) => (
-							<PostCard post={post} isFirst={i === 0} />
+							<PostCard post={post} index={i} length={posts.length} />
 						))}
 					</div>
 				</main>

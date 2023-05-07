@@ -3,13 +3,19 @@ import { Post } from '../utils/posts.ts'
 
 export default function PostCard({
 	post,
-	isFirst,
+	index,
+	length,
 }: {
 	post: Post
-	isFirst: boolean
+	index: number
+	length: number
 }) {
 	return (
-		<div class={`my-12 flex flex-row justify-between ${isFirst && 'mt-0'}`}>
+		<div
+			class={`my-12 flex flex-row justify-between ${index === 0 && 'mt-0'} ${
+				index === length - 1 && 'mb-0'
+			}`}
+		>
 			<a class="sm:col-span-2" href={`/${post.slug}`}>
 				<h3 class="text(3xl gray-900) font-bold mb-2">{post.title}</h3>
 				<time class="text-gray-300 font-bold">

@@ -84,8 +84,8 @@ export default function SignIn({ data }: PageProps<Props>) {
 				<title>Stay Weird | Log In</title>
 			</Head>
 			<Layout state={state}>
-				<div class="p-4 mx-auto max-w-screen-md">
-					<p class="text-center mb-4">Log in or create an account.</p>
+				<div class="p-4 mx-auto mt-4 max-w-screen-md">
+					<h1 class="text-xl text-center mb-4">Log in or create an account.</h1>
 					<form
 						method="post"
 						class="flex flex-col justify-center items-center gap-2"

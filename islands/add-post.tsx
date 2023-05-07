@@ -36,6 +36,8 @@ export default function AddPost({ isAuthed }: Props) {
 	const textAreaRef = useRef<any>()
 
 	function toggleIsAddingPost() {
+		if (!isAuthed) return (window.location.href = '/log-in')
+
 		if (!isAddingPost) return setIsAddingPost(true)
 
 		if (!titleText.length && !bodyText.length) {
@@ -61,8 +63,6 @@ export default function AddPost({ isAuthed }: Props) {
 		textAreaRef.current.style.height =
 			25 + textAreaRef.current.scrollHeight + 'px' // TODO: get actual line height
 	}
-
-	if (!isAuthed) return null
 
 	return (
 		<form method="post">
