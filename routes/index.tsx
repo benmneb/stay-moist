@@ -11,7 +11,7 @@ interface PageData {
 }
 
 export const handler: Handlers<PageData> = {
-	async GET(_, ctx: any) {
+	async GET(_, ctx) {
 		const posts = await getPosts()
 		return ctx.render({ posts, state: ctx.state })
 	},
@@ -23,7 +23,7 @@ export default function Home({ data }: PageProps<PageData>) {
 	return (
 		<>
 			<Head>
-				<title>Stay Moist</title>
+				<title>Stay Weird</title>
 			</Head>
 			<Layout state={state}>
 				<main class="p-4 mx-auto max-w-screen-md">
