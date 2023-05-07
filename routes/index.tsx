@@ -1,7 +1,7 @@
 import { Head } from '$fresh/runtime.ts'
 import { Handlers, PageProps } from '$fresh/server.ts'
-import PostCard from '../components/PostCard.tsx'
 import { Layout } from '../components/layout.tsx'
+import PostCard from '../components/post-card.tsx'
 import { Post, getPosts } from '../utils/posts.ts'
 import { ServerState } from './_middleware.ts'
 
