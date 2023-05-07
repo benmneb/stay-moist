@@ -19,7 +19,7 @@ export default function PostPage(props: PageProps<any>) {
 	return (
 		<>
 			<Head>
-				<title>{post.title} | Stay Moist</title>
+				<title>Stay Weird | {post.title}</title>
 			</Head>
 			<Layout state={state}>
 				<main class="max-w-screen-md px-4 pt-16 mx-auto">

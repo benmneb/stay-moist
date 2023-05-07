@@ -14,15 +14,15 @@ export function Layout({ children, state }: Props) {
 	return (
 		<>
 			<header class="max-w-screen-md mx-auto p-4 flex flex-row justify-between">
-				<a href="/" class="flex flex-row items-center w-max self-start">
+				<a href="/" class="flex flex-row items-center w-max gap-2">
 					<img
-						src="/logo.svg"
-						class="w-24 h-24 mr-2"
+						src="/logo.webp"
+						class="w-24 h-24 rounded-full"
 						alt="the fresh logo: a sliced lemon dripping with juice"
 					/>
 					<div>
-						<h1 class="my-2 text-4xl font-bold">Drippin'</h1>
-						<h2 class="font-bold text-gray-300">Stay moist</h2>
+						<h1 class="my-2 text-4xl font-bold">Trippn'</h1>
+						<h2 class="font-bold text-gray-300">Stay weird</h2>
 					</div>
 				</a>
 				<div class="flex justify-center items-center gap-2">

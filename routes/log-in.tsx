@@ -1,3 +1,4 @@
+import { Head } from '$fresh/runtime.ts'
 import { Handlers, PageProps } from '$fresh/server.ts'
 import { setCookie } from '$std/http/cookie.ts'
 import { Layout } from '../components/layout.tsx'
@@ -74,34 +75,39 @@ export default function SignIn({ data }: PageProps<Props>) {
 	const { error, state } = data
 
 	return (
-		<Layout state={state}>
-			<div class="p-4 mx-auto max-w-screen-md">
-				<p class="text-center mb-4">Log in or create an account.</p>
-				<form method="post" class="flex justify-center gap-2">
-					<input
-						type="email"
-						name="email"
-						placeholder="Email"
-						class="px-3 py-2 bg-white rounded border(gray-500 2) disabled:(opacity-50 cursor-not-allowed)"
-						required
-					/>
-					<input
-						type="password"
-						name="password"
-						placeholder="Password"
-						minLength={6}
-						class="px-3 py-2 bg-white rounded border(gray-500 2) disabled:(opacity-50 cursor-not-allowed)"
-						required
-					/>
-					<button
-						type="submit"
-						class="px-3 py-2 rounded border(gray-500 2) hover:bg-gray-200"
-					>
-						Lets go!
-					</button>
-				</form>
-				{error && <p class="text-red-500">{error}, please try again.</p>}
-			</div>
-		</Layout>
+		<>
+			<Head>
+				<title>Stay Weird | Log In</title>
+			</Head>
+			<Layout state={state}>
+				<div class="p-4 mx-auto max-w-screen-md">
+					<p class="text-center mb-4">Log in or create an account.</p>
+					<form method="post" class="flex justify-center gap-2">
+						<input
+							type="email"
+							name="email"
+							placeholder="Email"
+							class="px-3 py-2 bg-white rounded border(gray-500 2) disabled:(opacity-50 cursor-not-allowed)"
+							required
+						/>
+						<input
+							type="password"
+							name="password"
+							placeholder="Password"
+							minLength={6}
+							class="px-3 py-2 bg-white rounded border(gray-500 2) disabled:(opacity-50 cursor-not-allowed)"
+							required
+						/>
+						<button
+							type="submit"
+							class="px-3 py-2 rounded border(gray-500 2) hover:bg-gray-200"
+						>
+							Lets go!
+						</button>
+					</form>
+					{error && <p class="text-red-500">{error}, please try again.</p>}
+				</div>
+			</Layout>
+		</>
 	)
 }
