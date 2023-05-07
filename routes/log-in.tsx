@@ -86,7 +86,10 @@ export default function SignIn({ data }: PageProps<Props>) {
 			<Layout state={state}>
 				<div class="p-4 mx-auto max-w-screen-md">
 					<p class="text-center mb-4">Log in or create an account.</p>
-					<form method="post" class="flex justify-center gap-2">
+					<form
+						method="post"
+						class="flex flex-col justify-center items-center gap-2"
+					>
 						<input
 							type="email"
 							name="email"
@@ -109,7 +112,11 @@ export default function SignIn({ data }: PageProps<Props>) {
 							Lets go!
 						</button>
 					</form>
-					{error && <p class="text-red-500">{error}, please try again.</p>}
+					{error && (
+						<p class="text-red-500 text-center mt-4">
+							{error}, please try again.
+						</p>
+					)}
 				</div>
 			</Layout>
 		</>
