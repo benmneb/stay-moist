@@ -11,7 +11,7 @@ interface PageData {
 }
 
 export const handler: Handlers<PageData> = {
-	async GET(req, ctx: any) {
+	async GET(_, ctx: any) {
 		const posts = await getPosts()
 		return ctx.render({ posts, state: ctx.state })
 	},
