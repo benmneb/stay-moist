@@ -71,8 +71,8 @@ export default function AddPost({ isAuthed }: Props) {
 					type="button"
 					class={`px-3 py-2 bg-white rounded focus:outline-none flex gap-2 ${
 						isAddingPost
-							? 'hover:bg-gradient-to-r from-red-200 via-orange-200 to-amber-200'
-							: 'hover:bg-gradient-to-r from-green-200 via-teal-200 to-sky-200'
+							? 'hover:bg-gradient-to-r from-red-100 via-orange-100 to-amber-100'
+							: 'hover:bg-gradient-to-r from-indigo-100 via-violet-100 to-purple-100'
 					}`}
 					onClick={toggleIsAddingPost}
 				>
@@ -86,7 +86,7 @@ export default function AddPost({ isAuthed }: Props) {
 				{isAddingPost && !!titleText.length && !!bodyText.length && (
 					<button
 						type="submit"
-						class="px-3 py-2 bg-white rounded disabled:(opacity-50 cursor-not-allowed) focus:outline-none hover:bg-gradient-to-r from-indigo-200 via-purple-200 to-pink-200 flex gap-2 self-start"
+						class="px-3 py-2 bg-white rounded disabled:(opacity-50 cursor-not-allowed) focus:outline-none hover:bg-gradient-to-r from-indigo-100 via-violet-100 to-purple-100 flex gap-2 self-start"
 						onClick={handleSubmit}
 					>
 						<IconSend class="w-6 h-6" />
