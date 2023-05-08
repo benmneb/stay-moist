@@ -19,8 +19,12 @@ export function Layout({ children, state }: Props) {
 				<a href="/" class="flex flex-row items-center w-max gap-4">
 					<img src="/logo.webp" class="w-24 h-24 rounded-full" alt="catnip" />
 					<div>
-						<h1 class="my-2 text-4xl font-bold">Trippn'</h1>
-						<h2 class="font-bold text-gray-400">Catnip for humans</h2>
+						<h1 class="my-2 text-4xl font-bold bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">
+							Trippn'
+						</h1>
+						<h2 class="font-bold bg-gradient-to-r from-sky-500 via-blue-500 to-indigo-500 bg-clip-text text-transparent">
+							Catnip for humans
+						</h2>
 					</div>
 				</a>
 				<div class="flex justify-center items-center gap-2">
@@ -30,20 +34,20 @@ export function Layout({ children, state }: Props) {
 							<a href="api/log-out">
 								<button
 									type="button"
-									class="px-1.5 py-1 bg-white rounded border(gray-400 1) hover:bg-red-200 flex gap-2"
+									class="px-2 py-2 bg-transparent rounded hover:bg-blue-200 flex gap-2"
 								>
-									<IconLock class="w-4 h-4" />
+									<IconLock class="w-6 h-6" />
 								</button>
 							</a>
 						</>
 					) : (
-						<a href="/log-in" class="flex flex-row gap-2">
-							<span>Log in</span>
+						<a href="/log-in" class="flex flex-row items-center gap-2">
 							<button
 								type="button"
-								class="px-1.5 py-1 bg-white rounded border(gray-400 1) hover:bg-gray-200 flex gap-2"
+								class="px-3 py-2 bg-transparent rounded hover:bg-blue-200 flex gap-2"
 							>
-								<IconLockOpen class="w-4 h-4" />
+								Log in
+								<IconLockOpen class="w-6 h-6" />
 							</button>
 						</a>
 					)}

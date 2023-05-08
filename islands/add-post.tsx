@@ -70,7 +70,9 @@ export default function AddPost({ isAuthed }: Props) {
 				<button
 					type="button"
 					class={`px-3 py-2 bg-white rounded focus:outline-none flex gap-2 ${
-						isAddingPost ? 'hover:bg-red-200' : 'hover:bg-gray-200'
+						isAddingPost
+							? 'hover:bg-gradient-to-r from-red-200 via-orange-200 to-amber-200'
+							: 'hover:bg-gradient-to-r from-green-200 via-teal-200 to-sky-200'
 					}`}
 					onClick={toggleIsAddingPost}
 				>
@@ -84,7 +86,7 @@ export default function AddPost({ isAuthed }: Props) {
 				{isAddingPost && !!titleText.length && !!bodyText.length && (
 					<button
 						type="submit"
-						class="px-3 py-2 bg-white rounded disabled:(opacity-50 cursor-not-allowed) focus:outline-none hover:bg-purple-200 flex gap-2 self-start"
+						class="px-3 py-2 bg-white rounded disabled:(opacity-50 cursor-not-allowed) focus:outline-none hover:bg-gradient-to-r from-indigo-200 via-purple-200 to-pink-200 flex gap-2 self-start"
 						onClick={handleSubmit}
 					>
 						<IconSend class="w-6 h-6" />
@@ -103,7 +105,7 @@ export default function AddPost({ isAuthed }: Props) {
 						value={titleText}
 						onInput={(e) => setTitleText(e.currentTarget.value)}
 					/>
-					<time class="text-gray-300 font-bold cursor-not-allowed">
+					<time class="text-gray-300 font-bold cursor-not-allowed self-start">
 						{new Date().toLocaleDateString('en-us', {
 							year: 'numeric',
 							month: 'long',
