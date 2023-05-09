@@ -47,7 +47,7 @@ export function Layout({ children, state, title }: Props) {
 							</a>
 						</>
 					) : (
-						<a href="/log-in" class="flex flex-row items-center gap-2">
+						<a href="/log-in" class="flex flex-row items-center gap-2 -mr-2">
 							<button
 								type="button"
 								class="px-3 py-2 bg-transparent rounded hover:bg-gradient-to-r from-indigo-100 via-violet-100 to-purple-100 flex gap-2"
