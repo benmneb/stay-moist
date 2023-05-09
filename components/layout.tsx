@@ -15,7 +15,6 @@ type Props = {
 
 export function Layout({ children, state, title, path }: Props) {
 	const isAuthed = !!state?.user
-	console.log('path', path)
 	const isLogInPath = path === '/log-in'
 
 	return (
