@@ -80,7 +80,7 @@ export default function LogIn({ data }: PageProps<Props>) {
 	return (
 		<Layout state={state} title="Log in">
 			<main class="p-4 mx-auto mt-4 max-w-screen-md">
-				<h1 class="text-xl text-center mb-4">Log in or create an account.</h1>
+				<h1 class="text-xl text-center mb-5">Log in or sign up.</h1>
 				<form
 					method="post"
 					class="flex flex-col justify-center items-center gap-2"
@@ -102,7 +102,7 @@ export default function LogIn({ data }: PageProps<Props>) {
 					/>
 					<button
 						type="submit"
-						class="px-3 py-2 rounded hover:bg-gradient-to-r from-indigo-100 via-violet-100 to-purple-100"
+						class="px-3 py-2 rounded text-lg hover:bg-gradient-to-r from-indigo-100 via-violet-100 to-purple-100"
 					>
 						Lets go!
 					</button>
