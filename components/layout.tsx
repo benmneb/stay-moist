@@ -1,3 +1,4 @@
+import { Head } from '$fresh/runtime.ts'
 import IconBrandGithub from 'https://deno.land/x/tabler_icons_tsx@0.0.3/tsx/brand-github.tsx'
 import IconCopyleft from 'https://deno.land/x/tabler_icons_tsx@0.0.3/tsx/copyleft.tsx'
 import IconLockOpen from 'https://deno.land/x/tabler_icons_tsx@0.0.3/tsx/lock-open.tsx'
@@ -8,13 +9,17 @@ import { ServerState } from '/routes/_middleware.ts'
 type Props = {
 	children: ComponentChildren
 	state: ServerState
+	title?: string
 }
 
-export function Layout({ children, state }: Props) {
+export function Layout({ children, state, title }: Props) {
 	const isAuthed = !!state?.user
 
 	return (
 		<>
+			<Head>
+				<title>{title ? `Trippn' | ${title}` : "Trippn'"}</title>
+			</Head>
 			<header class="max-w-screen-md mx-auto p-4 flex flex-row justify-between mt-4">
 				<a href="/" class="flex flex-row items-center w-max gap-4">
 					<img src="/logo.webp" class="w-24 h-24 hue-rotate-30" alt="catnip" />
