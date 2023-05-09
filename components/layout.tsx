@@ -10,10 +10,13 @@ type Props = {
 	children: ComponentChildren
 	state: ServerState
 	title?: string
+	path?: string
 }
 
-export function Layout({ children, state, title }: Props) {
+export function Layout({ children, state, title, path }: Props) {
 	const isAuthed = !!state?.user
+	console.log('path', path)
+	const isLogInPath = path === '/log-in'
 
 	return (
 		<>
@@ -34,7 +37,7 @@ export function Layout({ children, state, title }: Props) {
 					</div>
 				</a>
 				<div class="flex justify-center items-center gap-2">
-					{isAuthed ? (
+					{isAuthed && (
 						<>
 							<span>{state?.user?.email}</span>
 							<a href="api/log-out">
@@ -46,7 +49,8 @@ export function Layout({ children, state, title }: Props) {
 								</button>
 							</a>
 						</>
-					) : (
+					)}
+					{!isLogInPath && !isAuthed && (
 						<a href="/log-in" class="flex flex-row items-center gap-2 -mr-2">
 							<button
 								type="button"

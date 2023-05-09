@@ -8,11 +8,13 @@ import { ServerState } from './_middleware.ts'
 interface Props {
 	error?: string
 	state: ServerState
+	path: string
 }
 
 export const handler: Handlers = {
 	async GET(req, ctx) {
-		return await ctx.render({ state: ctx.state })
+		const url = new URL(req.url)
+		return await ctx.render({ state: ctx.state, path: url.pathname })
 	},
 	async POST(req, ctx) {
 		const url = new URL(req.url)
@@ -75,10 +77,10 @@ export const handler: Handlers = {
 }
 
 export default function LogIn({ data }: PageProps<Props>) {
-	const { error, state } = data
+	const { error, state, path } = data
 
 	return (
-		<Layout state={state} title="Log in">
+		<Layout state={state} title="Log in" path={path}>
 			<main class="p-4 mx-auto mt-4 max-w-screen-md">
 				<h1 class="text-xl text-center mb-5">Log in or sign up.</h1>
 				<form
