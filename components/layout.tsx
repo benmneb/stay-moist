@@ -17,7 +17,7 @@ export function Layout({ children, state }: Props) {
 		<>
 			<header class="max-w-screen-md mx-auto p-4 flex flex-row justify-between mt-4">
 				<a href="/" class="flex flex-row items-center w-max gap-4">
-					<img src="/logo.webp" class="w-24 h-24 rounded-full" alt="catnip" />
+					<img src="/logo.webp" class="w-24 h-24 hue-rotate-30" alt="catnip" />
 					<div>
 						<h1 class="my-2 text-4xl font-bold bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
 							Trippn'
