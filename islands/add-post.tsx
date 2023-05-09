@@ -33,7 +33,7 @@ export default function AddPost({ isAuthed }: Props) {
 	const [isAddingPost, setIsAddingPost] = useState<boolean>(false)
 	const [titleText, setTitleText] = useState<string>('')
 	const [bodyText, setBodyText] = useState<string>('')
-	const textAreaRef = useRef<any>()
+	const textAreaRef = useRef<HTMLTextAreaElement>(null)
 
 	function toggleIsAddingPost() {
 		if (!isAuthed) return (window.location.href = '/log-in')
@@ -59,6 +59,8 @@ export default function AddPost({ isAuthed }: Props) {
 	}
 
 	function textAreaAdjust() {
+		if (!textAreaRef.current) return
+
 		textAreaRef.current.style.height = '0px'
 		textAreaRef.current.style.height =
 			25 + textAreaRef.current.scrollHeight + 'px' // TODO: get actual line height
