@@ -10,6 +10,12 @@ export default function PostCard({
 	index: number
 	length: number
 }) {
+	const pubDate = new Date(post.publishedAt).toLocaleDateString('en-us', {
+		year: 'numeric',
+		month: 'long',
+		day: 'numeric',
+	})
+
 	return (
 		<div
 			class={`my-12 flex flex-row justify-between ${index === 0 && 'mt-0'} ${
@@ -18,12 +24,12 @@ export default function PostCard({
 		>
 			<a class="sm:col-span-2" href={`/${post.slug}`}>
 				<h3 class="text(3xl gray-900) font-bold mb-2">{post.title}</h3>
-				<time class="text-gray-300 font-bold">
-					{new Date(post.publishedAt).toLocaleDateString('en-us', {
-						year: 'numeric',
-						month: 'long',
-						day: 'numeric',
-					})}
+				<time
+					dateTime={new Date(post.publishedAt).toISOString()}
+					title={pubDate}
+					class="text-gray-300 font-bold"
+				>
+					{pubDate}
 				</time>
 				<div class="mt-4 text-gray-500">{post.snippet}</div>
 			</a>
