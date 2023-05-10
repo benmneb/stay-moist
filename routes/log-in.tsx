@@ -18,6 +18,8 @@ export const handler: Handlers = {
 	},
 	async POST(req, ctx) {
 		const url = new URL(req.url)
+		const params = new URLSearchParams(url?.search)
+		const nextRoute = params.get('then') || ''
 		const form = await req.formData()
 		const email = form.get('email')?.toString() || ''
 		const password = form.get('password')?.toString() || ''
@@ -34,7 +36,7 @@ export const handler: Handlers = {
 			const { user, session } = data
 
 			const headers = new Headers()
-			headers.set('location', '/')
+			headers.set('location', `/${nextRoute}`)
 
 			setCookie(headers, {
 				name: 'auth',
