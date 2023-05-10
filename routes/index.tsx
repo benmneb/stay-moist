@@ -1,7 +1,8 @@
 import { Handlers, PageProps } from '$fresh/server.ts'
+import IconWriting from 'https://deno.land/x/tabler_icons_tsx@0.0.3/tsx/writing.tsx'
+
 import { Layout } from '../components/layout.tsx'
 import PostCard from '../components/post-card.tsx'
-import AddPost from '../islands/add-post.tsx'
 import { Post, getPosts } from '../utils/posts.ts'
 import { ServerState } from './_middleware.ts'
 
@@ -19,12 +20,22 @@ export const handler: Handlers = {
 
 export default function Home({ data }: PageProps<PageData>) {
 	const { posts, state } = data
-	const isAuthed = !!state?.user
+	const link = state.user ? '/add-post' : '/log-in?then=add-post'
 
 	return (
 		<Layout state={state}>
 			<main class="p-4 mx-auto max-w-screen-md">
-				<AddPost isAuthed={isAuthed} />
+				<div class="mb-4 -mx-3">
+					<a href={link}>
+						<button
+							type="button"
+							class="px-3 py-2 bg-white rounded focus:outline-none flex gap-2 hover:bg-gradient-to-r from-indigo-100 via-violet-100 to-purple-100"
+						>
+							<IconWriting class="w-6 h-6" />
+							Add post
+						</button>
+					</a>
+				</div>
 				<div class="mt-0">
 					{posts.map((post, i) => (
 						<PostCard post={post} index={i} length={posts.length} />
