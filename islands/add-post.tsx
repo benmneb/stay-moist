@@ -23,11 +23,11 @@ export default function AddPost({ isAuthed }: Props) {
 
 	function handleCancel() {
 		if (!titleText.length && !bodyText.length) {
-			return history.back()
+			return (window.location.href = '/')
 		}
 
 		if (confirm('Are you sure? You will lose everything you have entered')) {
-			history.back()
+			window.location.href = '/'
 		}
 	}
 
