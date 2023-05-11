@@ -1,10 +1,18 @@
 import { Handlers, PageProps } from '$fresh/server.ts'
 import { Layout } from '../components/layout.tsx'
 import { ServerState } from './_middleware.ts'
-import AddPostIsland from '/islands/add-post.tsx'
+import AddPostForm from '/islands/add-post.tsx'
 
 export const handler: Handlers = {
 	GET(_, ctx) {
+		if (!ctx.state?.user) {
+			const headers = new Headers()
+			headers.set('location', '/log-in?then=add-post')
+			return new Response(null, {
+				status: 303, // See Other
+				headers,
+			})
+		}
 		return ctx.render({ state: ctx.state })
 	},
 	async POST(req, ctx) {
@@ -34,12 +42,11 @@ interface Props {
 
 export default function AddPost({ data }: PageProps<Props>) {
 	const { state } = data
-	const isAuthed = !!state?.user
 
 	return (
 		<Layout state={state}>
 			<main class="p-4 mx-auto max-w-screen-md">
-				<AddPostIsland isAuthed={isAuthed} />
+				<AddPostForm />
 			</main>
 		</Layout>
 	)

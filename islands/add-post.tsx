@@ -1,12 +1,8 @@
 import IconSend from 'https://deno.land/x/tabler_icons_tsx@0.0.3/tsx/send.tsx'
 import IconTrashX from 'https://deno.land/x/tabler_icons_tsx@0.0.3/tsx/trash-x.tsx'
-import { useEffect, useRef, useState } from 'preact/hooks'
+import { useRef, useState } from 'preact/hooks'
 
-interface Props {
-	isAuthed: boolean
-}
-
-export default function AddPost({ isAuthed }: Props) {
+export default function AddPost() {
 	const [titleText, setTitleText] = useState<string>('')
 	const [bodyText, setBodyText] = useState<string>('')
 	const textAreaRef = useRef<HTMLTextAreaElement>(null)
@@ -16,10 +12,6 @@ export default function AddPost({ isAuthed }: Props) {
 		month: 'long',
 		day: 'numeric',
 	})
-
-	useEffect(() => {
-		if (!isAuthed) window.location.href = '/log-in?then=/add-post'
-	}, [])
 
 	function handleCancel() {
 		if (!titleText.length && !bodyText.length) {
