@@ -1,5 +1,5 @@
-import IconSend from 'https://deno.land/x/tabler_icons_tsx@0.0.3/tsx/send.tsx'
-import IconTrashX from 'https://deno.land/x/tabler_icons_tsx@0.0.3/tsx/trash-x.tsx'
+import IconSend from 'icons/send.tsx'
+import IconTrashX from 'icons/trash-x.tsx'
 import { useRef, useState } from 'preact/hooks'
 
 export default function AddPost() {

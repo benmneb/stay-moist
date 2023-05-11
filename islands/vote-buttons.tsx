@@ -1,5 +1,5 @@
-import IconChevronDown from 'https://deno.land/x/tabler_icons_tsx@0.0.3/tsx/chevron-down.tsx'
-import IconChevronUp from 'https://deno.land/x/tabler_icons_tsx@0.0.3/tsx/chevron-up.tsx'
+import IconChevronDown from 'icons/chevron-down.tsx'
+import IconChevronUp from 'icons/chevron-up.tsx'
 import { useState } from 'preact/hooks'
 
 interface VoteButtonProps {

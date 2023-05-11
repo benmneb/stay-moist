@@ -1,8 +1,8 @@
 import { Head } from '$fresh/runtime.ts'
-import IconBrandGithub from 'https://deno.land/x/tabler_icons_tsx@0.0.3/tsx/brand-github.tsx'
-import IconCopyleft from 'https://deno.land/x/tabler_icons_tsx@0.0.3/tsx/copyleft.tsx'
-import IconLockOpen from 'https://deno.land/x/tabler_icons_tsx@0.0.3/tsx/lock-open.tsx'
-import IconLock from 'https://deno.land/x/tabler_icons_tsx@0.0.3/tsx/lock.tsx'
+import IconBrandGithub from 'icons/brand-github.tsx'
+import IconCopyleft from 'icons/copyleft.tsx'
+import IconLockOpen from 'icons/lock-open.tsx'
+import IconLock from 'icons/lock.tsx'
 import { ComponentChildren } from 'preact'
 import { ServerState } from '/routes/_middleware.ts'
 

@@ -1,6 +1,6 @@
 import { Handlers, PageProps } from '$fresh/server.ts'
 import { render } from '$gfm'
-import IconArrowBack from 'https://deno.land/x/tabler_icons_tsx@0.0.3/tsx/arrow-back.tsx'
+import IconArrowBack from 'icons/arrow-back.tsx'
 import { Layout } from '../components/layout.tsx'
 import { Post } from '../utils/posts.ts'
 import { ServerState } from './_middleware.ts'

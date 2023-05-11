@@ -1,5 +1,5 @@
 import { Handlers, PageProps } from '$fresh/server.ts'
-import IconWriting from 'https://deno.land/x/tabler_icons_tsx@0.0.3/tsx/writing.tsx'
+import IconWriting from 'icons/writing.tsx'
 
 import { Layout } from '../components/layout.tsx'
 import PostCard from '../components/post-card.tsx'
