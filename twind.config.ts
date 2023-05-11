@@ -7,6 +7,13 @@ import presetTailWind from "twind-preset-tailwind";
 export default {
   ...defineConfig({
     presets: [presetAutoPrefix(), presetTailWind()],
+    theme: {
+      extend: {
+        boxShadow: {
+          "next": "0 4px 14px 0 rgba(0, 0, 0, 0.3)",
+        },
+      },
+    },
   }),
   selfURL: import.meta.url,
-} as Options;
+} as unknown as Options;

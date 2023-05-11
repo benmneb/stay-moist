@@ -43,7 +43,7 @@ export default function AddPost() {
 			<header class="flex justify-between mb-4 -mx-3">
 				<button
 					type="button"
-					class="px-3 py-2 bg-white rounded focus:outline-none flex gap-2 hover:bg-gradient-to-r from-red-100 via-orange-100 to-amber-100"
+					class="px-3 py-2 flex gap-2 rounded focus:outline-none hover:bg-gradient-to-r from-red-100 via-orange-100 to-amber-100 hover:shadow-next hover:shadow-orange-200/40"
 					onClick={handleCancel}
 				>
 					<IconTrashX class="w-6 h-6" />
@@ -52,7 +52,7 @@ export default function AddPost() {
 				{!!titleText.length && !!bodyText.length && (
 					<button
 						type="submit"
-						class="px-3 py-2 bg-white rounded disabled:(opacity-50 cursor-not-allowed) focus:outline-none hover:bg-gradient-to-r from-indigo-100 via-violet-100 to-purple-100 flex gap-2 self-start"
+						class="px-3 py-2 flex gap-2 self-start rounded focus:outline-none hover:bg-gradient-to-r from-indigo-100 via-violet-100 to-purple-100 hover:shadow-next hover:shadow-violet-200/40"
 						onClick={handleSubmit}
 					>
 						<IconSend class="w-6 h-6" />

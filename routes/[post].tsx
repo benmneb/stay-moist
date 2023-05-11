@@ -41,7 +41,7 @@ export default function PostPage({ data }: PageProps<PostPageProps>) {
 					<a href="/">
 						<button
 							type="button"
-							class="px-3 py-2 bg-white rounded border(gray-400 1) hover:bg-gray-200 flex gap-2"
+							class="px-3 py-2 rounded border(gray-400 1) hover:bg-gray-200 flex gap-2"
 							href="/"
 						>
 							<IconArrowBack class="w-6 h-6" />
