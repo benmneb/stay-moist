@@ -106,7 +106,7 @@ export default function LogIn({ data }: PageProps<Props>) {
 					/>
 					<button
 						type="submit"
-						class="px-3 py-2 rounded text-lg hover:bg-gradient-to-r from-indigo-100 via-violet-100 to-purple-100 hover:shadow-next hover:shadow-violet-200/40"
+						class="px-3 py-2 rounded text-lg hover:bg-gradient-to-r from-indigo-100 via-violet-100 to-purple-100 hover:shadow-next hover:shadow-violet-200/40 active:scale-95 transition-transform"
 					>
 						Let's go!
 					</button>

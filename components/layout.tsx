@@ -42,7 +42,7 @@ export function Layout({ children, state, title, path }: Props) {
 							<a href="api/log-out">
 								<button
 									type="button"
-									class="px-2 py-2 rounded hover:bg-gradient-to-r from-red-100 via-orange-100 to-amber-100 flex gap-2 hover:shadow-next hover:shadow-orange-200/40"
+									class="px-2 py-2 rounded hover:bg-gradient-to-r from-red-100 via-orange-100 to-amber-100 flex gap-2 hover:shadow-next hover:shadow-orange-200/40 active:scale-95 transition-transform"
 								>
 									<IconLock class="w-6 h-6" />
 								</button>
@@ -53,7 +53,7 @@ export function Layout({ children, state, title, path }: Props) {
 						<a href="/log-in" class="flex flex-row items-center gap-2 -mr-2">
 							<button
 								type="button"
-								class="px-3 py-2 rounded hover:bg-gradient-to-r from-indigo-100 via-violet-100 to-purple-100 flex gap-2 hover:shadow-next hover:shadow-violet-200/40"
+								class="px-3 py-2 rounded hover:bg-gradient-to-r from-indigo-100 via-violet-100 to-purple-100 flex gap-2 hover:shadow-next hover:shadow-violet-200/40 active:scale-95 transition-transform"
 							>
 								Log in
 								<IconLockOpen class="w-6 h-6" />
@@ -66,13 +66,13 @@ export function Layout({ children, state, title, path }: Props) {
 			<footer class="max-w-screen-md mx-auto p-4 flex flex-row justify-center gap-4">
 				<a
 					href="https://creativecommons.org/licenses/by-sa/4.0/"
-					class="p-2 rounded-full hover:bg-gradient-to-r from-sky-100 via-blue-100 to-indigo-100 hover:shadow-next hover:shadow-blue-200/40"
+					class="p-2 rounded-full hover:bg-gradient-to-r from-sky-100 via-blue-100 to-indigo-100 hover:shadow-next hover:shadow-blue-200/40 active:scale-95 transition-transform"
 				>
 					<IconCopyleft class="w-6 h-6" />
 				</a>
 				<a
 					href="https://github.com/benmneb"
-					class="p-2 rounded-full hover:bg-gradient-to-r from-violet-100 via-purple-100 to-fuchsia-100 hover:shadow-next hover:shadow-purple-200/40"
+					class="p-2 rounded-full hover:bg-gradient-to-r from-violet-100 via-purple-100 to-fuchsia-100 hover:shadow-next hover:shadow-purple-200/40 active:scale-95 transition-transform"
 				>
 					<IconBrandGithub class="w-6 h-6" />
 				</a>

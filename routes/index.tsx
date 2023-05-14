@@ -29,7 +29,7 @@ export default function Home({ data }: PageProps<PageData>) {
 					<a href={link}>
 						<button
 							type="button"
-							class="px-3 py-2 rounded focus:outline-none flex gap-2 hover:bg-gradient-to-r from-indigo-100 via-violet-100 to-purple-100 hover:shadow-next hover:shadow-violet-200/40 "
+							class="px-3 py-2 rounded focus:outline-none flex gap-2 hover:bg-gradient-to-r from-indigo-100 via-violet-100 to-purple-100 hover:shadow-next hover:shadow-violet-200/40 active:scale-95 transition-transform"
 						>
 							<IconWriting class="w-6 h-6" />
 							Add post
