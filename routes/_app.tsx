@@ -3,7 +3,7 @@ import { AppProps } from '$fresh/src/server/types.ts'
 
 export default function App({ Component }: AppProps) {
 	return (
-		<html data-custom="data">
+		<html>
 			<Head>
 				<link rel="stylesheet" href={asset('/fonts.css')} />
 			</Head>
