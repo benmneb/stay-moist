@@ -5,6 +5,7 @@ import { redis } from "/lib/redis.ts";
 type User = {
   id: number;
   email: string;
+  username: string;
   // ...Supabase sends a lot more here that is never used
 };
 

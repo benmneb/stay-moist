@@ -2,7 +2,7 @@ import { Head } from '$fresh/runtime.ts'
 import IconBrandGithub from 'icons/brand-github.tsx'
 import IconCopyleft from 'icons/copyleft.tsx'
 import IconLockOpen from 'icons/lock-open.tsx'
-import IconLock from 'icons/lock.tsx'
+import IconUserCircle from 'icons/user-circle.tsx'
 import { ComponentChildren } from 'preact'
 import { ServerState } from '/routes/_middleware.ts'
 
@@ -38,13 +38,13 @@ export function Layout({ children, state, title, path }: Props) {
 				<div class="flex justify-center items-center gap-2">
 					{isAuthed && (
 						<>
-							<span>{state?.user?.email}</span>
-							<a href="api/log-out">
+							<a href="account">
 								<button
 									type="button"
-									class="px-2 py-2 rounded hover:bg-gradient-to-r from-red-100 via-orange-100 to-amber-100 flex gap-2 hover:shadow-next hover:shadow-orange-200/40 active:scale-95 transition-transform"
+									class="px-2 py-2 flex gap-2 active:scale-95 transition-transform"
 								>
-									<IconLock class="w-6 h-6" />
+									{state?.user?.email}
+									<IconUserCircle class="w-6 h-6" />
 								</button>
 							</a>
 						</>
