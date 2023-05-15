@@ -65,7 +65,7 @@ export default function AddPost() {
 					type="text"
 					name="title"
 					placeholder="Your Title"
-					class="px-3 py-2 -ml-3 bg-white rounded focus-visible:outline-none text(3xl gray-900) font-bold mb-2"
+					class="px-3 py-2 -ml-3 bg-white rounded focus-visible:outline-none text(5xl gray-900) font-bold mb-2"
 					required
 					value={titleText}
 					onInput={(e) => setTitleText(e.currentTarget.value)}
