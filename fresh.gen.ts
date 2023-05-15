@@ -4,12 +4,13 @@
 
 import config from "./deno.json" assert { type: "json" };
 import * as $0 from "./routes/[post].tsx";
-import * as $1 from "./routes/_middleware.ts";
-import * as $2 from "./routes/account.tsx";
-import * as $3 from "./routes/add-post.tsx";
-import * as $4 from "./routes/api/log-out.ts";
-import * as $5 from "./routes/index.tsx";
-import * as $6 from "./routes/log-in.tsx";
+import * as $1 from "./routes/_app.tsx";
+import * as $2 from "./routes/_middleware.ts";
+import * as $3 from "./routes/account.tsx";
+import * as $4 from "./routes/add-post.tsx";
+import * as $5 from "./routes/api/log-out.ts";
+import * as $6 from "./routes/index.tsx";
+import * as $7 from "./routes/log-in.tsx";
 import * as $$0 from "./islands/account-settings-form.tsx";
 import * as $$1 from "./islands/add-post.tsx";
 import * as $$2 from "./islands/vote-buttons.tsx";
@@ -17,12 +18,13 @@ import * as $$2 from "./islands/vote-buttons.tsx";
 const manifest = {
   routes: {
     "./routes/[post].tsx": $0,
-    "./routes/_middleware.ts": $1,
-    "./routes/account.tsx": $2,
-    "./routes/add-post.tsx": $3,
-    "./routes/api/log-out.ts": $4,
-    "./routes/index.tsx": $5,
-    "./routes/log-in.tsx": $6,
+    "./routes/_app.tsx": $1,
+    "./routes/_middleware.ts": $2,
+    "./routes/account.tsx": $3,
+    "./routes/add-post.tsx": $4,
+    "./routes/api/log-out.ts": $5,
+    "./routes/index.tsx": $6,
+    "./routes/log-in.tsx": $7,
   },
   islands: {
     "./islands/account-settings-form.tsx": $$0,

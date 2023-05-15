@@ -21,7 +21,6 @@ export function Layout({ children, state, title, path }: Props) {
 		<>
 			<Head>
 				<title>{title ? `Trippn' | ${title}` : "Trippn'"}</title>
-				<link rel="stylesheet" href="/baseline.css" />
 			</Head>
 			<header class="max-w-screen-md mx-auto p-4 flex flex-row justify-between mt-4">
 				<a href="/" class="flex flex-row items-center w-max gap-4">
