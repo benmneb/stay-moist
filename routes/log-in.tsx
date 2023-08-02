@@ -1,8 +1,7 @@
 import { Handlers, PageProps } from '$fresh/server.ts'
 import { setCookie } from '$std/http/cookie.ts'
-import { AuthError, Session, User } from 'supabase'
+import * as bcrypt from 'https://deno.land/x/crypt@v0.1.0/bcrypt.ts'
 import { Layout } from '../components/layout.tsx'
-import { supabase } from '../lib/supabase.ts'
 import { ServerState } from './_middleware.ts'
 
 interface Props {
@@ -22,59 +21,99 @@ export const handler: Handlers = {
 		const nextRoute = params.get('then') || ''
 		const form = await req.formData()
 		const email = form.get('email')?.toString() || ''
-		const password = form.get('password')?.toString() || ''
+		const rawPassword = form.get('password')?.toString() || ''
+		const password = bcrypt.hash(rawPassword)
 
-		const { data, error } = await supabase.auth.signUp({
-			email,
-			password,
+		const db = await Deno.openKv()
+
+		const key = ['users', email]
+		const value = { email, password }
+
+		const { ok } = await db
+			.atomic()
+			.check({ key, versionstamp: null }) // `null` versionstamps mean 'no value'
+			.set(key, value)
+			.commit()
+
+		if (!ok) {
+			console.log('User already exists.')
+			return await ctx.render({
+				state: ctx.state,
+				error: 'User already exists.',
+			})
+		}
+
+		console.log('User did not yet exist. Inserted!')
+
+		const headers = new Headers()
+		headers.set('location', `/${nextRoute}`)
+
+		setCookie(headers, {
+			name: 'auth',
+			value: 'unique',
+			maxAge: 120,
+			sameSite: 'Lax',
+			domain: url.hostname,
+			path: '/',
+			secure: true,
 		})
 
-		function handleSuccess(data: {
-			user: User | null
-			session: Session | null
-		}) {
-			const { user, session } = data
+		return new Response(null, {
+			status: 303, // See Other
+			headers,
+		})
 
-			const headers = new Headers()
-			headers.set('location', `/${nextRoute}`)
+		// const { data, error } = await supabase.auth.signUp({
+		// 	email,
+		// 	password,
+		// })
 
-			setCookie(headers, {
-				name: 'auth',
-				value: session!.access_token,
-				maxAge: session!.expires_in,
-				sameSite: 'Lax',
-				domain: url.hostname,
-				path: '/',
-				secure: true,
-			})
+		// function handleSuccess(data: {
+		// 	user: User | null
+		// 	session: Session | null
+		// }) {
+		// 	const { user, session } = data
 
-			return new Response(null, {
-				status: 303, // See Other
-				headers,
-			})
-		}
+		// 	const headers = new Headers()
+		// 	headers.set('location', `/${nextRoute}`)
 
-		async function handleError(error: AuthError) {
-			const { message } = error!
-			return await ctx.render({ state: ctx.state, error: message })
-		}
+		// 	setCookie(headers, {
+		// 		name: 'auth',
+		// 		value: session!.access_token,
+		// 		maxAge: session!.expires_in,
+		// 		sameSite: 'Lax',
+		// 		domain: url.hostname,
+		// 		path: '/',
+		// 		secure: true,
+		// 	})
 
-		if (error) {
-			if (error?.message.includes('User already registered')) {
-				const { data, error } = await supabase.auth.signInWithPassword({
-					email,
-					password,
-				})
+		// 	return new Response(null, {
+		// 		status: 303, // See Other
+		// 		headers,
+		// 	})
+		// }
 
-				if (error) return handleError(error)
+		// async function handleError(error: AuthError) {
+		// 	const { message } = error!
+		// 	return await ctx.render({ state: ctx.state, error: message })
+		// }
 
-				return handleSuccess(data)
-			}
+		// if (error) {
+		// 	if (error?.message.includes('User already registered')) {
+		// 		const { data, error } = await supabase.auth.signInWithPassword({
+		// 			email,
+		// 			password,
+		// 		})
 
-			return handleError(error)
-		}
+		// 		if (error) return handleError(error)
 
-		return handleSuccess(data)
+		// 		return handleSuccess(data)
+		// 	}
+
+		// 	return handleError(error)
+		// }
+
+		// return handleSuccess(data)
 	},
 }
 
