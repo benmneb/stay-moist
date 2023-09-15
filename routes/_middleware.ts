@@ -1,6 +1,5 @@
 import { MiddlewareHandlerContext } from '$fresh/server.ts'
 import { getCookies } from '$std/http/cookie.ts'
-import { redis } from '/lib/redis.ts'
 
 type User = {
 	id: number
@@ -24,16 +23,13 @@ export async function handler(
 	const headers = new Headers()
 
 	if (access_token) {
-		const session = await redis.get(access_token)
-
-		if (!session) {
-			headers.set('location', '/')
-			return new Response(null, { headers, status: 303 })
-		}
-
-		const user = JSON.parse(session!.toString())?.user
-
-		ctx.state.user = user
+		// const session = await redis.get(access_token)
+		// if (!session) {
+		// 	headers.set('location', '/')
+		// 	return new Response(null, { headers, status: 303 })
+		// }
+		// const user = JSON.parse(session!.toString())?.user
+		// ctx.state.user = user
 	}
 
 	return await ctx.next()
