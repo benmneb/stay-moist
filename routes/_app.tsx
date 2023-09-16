@@ -5,6 +5,7 @@ export default function App({ Component }: AppProps) {
 	return (
 		<html>
 			<Head>
+				<link rel="stylesheet" href={asset('/tailwind.css')} />
 				<link rel="stylesheet" href={asset('/fonts.css')} />
 			</Head>
 			<body>

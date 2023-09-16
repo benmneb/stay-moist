@@ -1,6 +1,6 @@
 {
 	"tasks": {
-		"start": "deno run -A --unstable --watch=static/,routes/ dev.ts",
+		"start": "tailwindcss -i ./static/input.css -o ./static/tailwind.css --minify --watch & deno run -A --unstable --watch=static/,routes/ dev.ts",
 		"build": "deno run -A dev.ts build",
 		"preview": "deno run -A main.ts"
 	},
@@ -19,12 +19,7 @@
 		"preact/": "https://esm.sh/preact@10.15.1/",
 		"preact-render-to-string": "https://esm.sh/*preact-render-to-string@6.2.1",
 		"@preact/signals": "https://esm.sh/*@preact/signals@1.1.3",
-		"@preact/signals-core": "https://esm.sh/*@preact/signals-core@1.2.3",
-		"twind": "https://esm.sh/twind@0.16.19",
-		"twind-preset-autoprefix": "https://esm.sh/@twind/preset-autoprefix@1.0.7",
-		"twind-preset-tailwind": "https://esm.sh/@twind/preset-tailwind@1.1.4",
-		"twind_fresh_plugin/": "https://deno.land/x/fresh_twindv1_plugin@v1.3.0/",
-		"twind/": "https://esm.sh/twind@0.16.19/"
+		"@preact/signals-core": "https://esm.sh/*@preact/signals-core@1.2.3"
 	},
 	"lint": {
 		"rules": {

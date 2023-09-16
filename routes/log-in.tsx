@@ -132,7 +132,7 @@ export default function LogIn({ data }: PageProps<Props>) {
 						type="email"
 						name="email"
 						placeholder="Email"
-						class="px-3 py-2 bg-white rounded border(gray-500 2) disabled:(opacity-50 cursor-not-allowed)"
+						class="px-3 py-2 bg-white rounded border-2 border-gray-500 disabled:opacity-50 disabled:cursor-not-allowed"
 						required
 					/>
 					<input
@@ -140,7 +140,7 @@ export default function LogIn({ data }: PageProps<Props>) {
 						name="password"
 						placeholder="Password"
 						minLength={6}
-						class="px-3 py-2 bg-white rounded border(gray-500 2) disabled:(opacity-50 cursor-not-allowed)"
+						class="px-3 py-2 bg-white rounded border-gray-500 border-2 disabled:opacity-50 disabled:cursor-not-allowed"
 						required
 					/>
 					<button

@@ -23,7 +23,7 @@ export default function PostCard({
 			}`}
 		>
 			<a class="sm:col-span-2" href={`/${post.slug}`}>
-				<h3 class="text(3xl gray-900) font-bold mb-2">{post.title}</h3>
+				<h3 class="text-3xl text-gray-900 font-bold mb-2">{post.title}</h3>
 				<time
 					dateTime={new Date(post.publishedAt).toISOString()}
 					title={pubDate}

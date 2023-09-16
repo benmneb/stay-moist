@@ -23,7 +23,7 @@ export default function AccountSettingsForm({ user }: Props) {
 					onClick={() =>
 						setTimeout(() => usernameDialogRef.current?.showModal(), 150)
 					}
-					class="flex flex-col items-center justify-center gap-4 p-4 py-8 text-lg text-indigo-500 rounded-lg bg-indigo-100/50 border-2 border-indigo-300 hover:(bg-indigo-100) active:scale-95 transition-transform"
+					class="flex flex-col items-center justify-center gap-4 p-4 py-8 text-lg text-indigo-500 rounded-lg bg-indigo-100/50 border-2 border-indigo-300 hover:bg-indigo-100 active:scale-95 transition-transform"
 				>
 					<IconUserEdit class="w-8 h-8 text-indigo-400" />
 					Edit username
@@ -32,7 +32,7 @@ export default function AccountSettingsForm({ user }: Props) {
 					onClick={() =>
 						setTimeout(() => emailDialogRef.current?.showModal(), 150)
 					}
-					class="flex flex-col items-center justify-center gap-4 p-4 py-8 text-lg text-violet-500 rounded-lg bg-violet-100/50 border-2 border-violet-300 hover:(bg-violet-100) active:scale-95 transition-transform"
+					class="flex flex-col items-center justify-center gap-4 p-4 py-8 text-lg text-violet-500 rounded-lg bg-violet-100/50 border-2 border-violet-300 hover:bg-violet-100 active:scale-95 transition-transform"
 				>
 					<IconMail class="w-8 h-8 text-violet-400" />
 					Change email
@@ -41,7 +41,7 @@ export default function AccountSettingsForm({ user }: Props) {
 					onClick={() =>
 						setTimeout(() => passwordDialogRef.current?.showModal(), 150)
 					}
-					class="flex flex-col items-center justify-center gap-4 p-4 py-8 text-lg text-purple-500 rounded-lg bg-purple-100/50 border-2 border-purple-300 hover:(bg-purple-100) active:scale-95 transition-transform"
+					class="flex flex-col items-center justify-center gap-4 p-4 py-8 text-lg text-purple-500 rounded-lg bg-purple-100/50 border-2 border-purple-300 hover:bg-purple-100 active:scale-95 transition-transform"
 				>
 					<IconShieldLock class="w-8 h-8 text-purple-400" />
 					Update password
@@ -50,13 +50,13 @@ export default function AccountSettingsForm({ user }: Props) {
 					onClick={() =>
 						setTimeout(() => deletingDialogRef.current?.showModal(), 150)
 					}
-					class="flex flex-col items-center justify-center gap-4 p-4 py-8 text-lg text-rose-500 rounded-lg bg-rose-100/50 border-2 border-rose-300 hover:(bg-rose-100) active:scale-95 transition-transform"
+					class="flex flex-col items-center justify-center gap-4 p-4 py-8 text-lg text-rose-500 rounded-lg bg-rose-100/50 border-2 border-rose-300 hover:bg-rose-100 active:scale-95 transition-transform"
 				>
 					<IconTrashX class="w-8 h-8 text-rose-400" />
 					Delete account
 				</button>
 				<a href="api/log-out">
-					<button class="w-full flex flex-col items-center justify-center gap-4 p-4 py-8 text-lg text-stone-500 rounded-lg bg-stone-100/50 border-2 border-stone-300 hover:(bg-stone-100) active:scale-95 transition-transform">
+					<button class="w-full flex flex-col items-center justify-center gap-4 p-4 py-8 text-lg text-stone-500 rounded-lg bg-stone-100/50 border-2 border-stone-300 hover:bg-stone-100 active:scale-95 transition-transform">
 						<IconLock class="w-8 h-8 text-stone-400" />
 						Log out
 					</button>
@@ -64,7 +64,7 @@ export default function AccountSettingsForm({ user }: Props) {
 			</main>
 			<dialog
 				ref={usernameDialogRef}
-				class="open:(p-8 pb-4 flex flex-col rounded-lg shadow-xl w-full max-w-md) backdrop:(bg-white/20 backdrop-blur-md)"
+				class="open:p-8 open:pb-4 open:flex open:flex-col open:rounded-lg open:shadow-xl open:w-full open:max-w-md backdrop:bg-white/20 backdrop-blur-md"
 			>
 				<h1 class="text-2xl mb-4">Edit username</h1>
 				<p class="text-lg">
@@ -78,7 +78,7 @@ export default function AccountSettingsForm({ user }: Props) {
 							minLength={4}
 							maxLength={16}
 							placeholder={user?.username || 'Anonymous'}
-							class="w-56 px-3 py-2 rounded text-lg bg-indigo-100 text-indigo-700 placeholder:(text-indigo-300) focus-visible:(outline outline-indigo-300)"
+							class="w-56 px-3 py-2 rounded text-lg bg-indigo-100 text-indigo-700 placeholder:text-indigo-300 focus-visible:outline focus-visible:outline-indigo-300"
 							required
 						/>
 					</div>
@@ -102,7 +102,7 @@ export default function AccountSettingsForm({ user }: Props) {
 			</dialog>
 			<dialog
 				ref={emailDialogRef}
-				class="open:(p-8 pb-4 flex flex-col rounded-lg shadow-xl w-full max-w-md) backdrop:(bg-white/20 backdrop-blur-md)"
+				class="open:p-8 open:pb-4 open:flex open:flex-col open:rounded-lg open:shadow-xl open:w-full open:max-w-md backdrop:bg-white/20 backdrop-blur-md"
 			>
 				<h1 class="text-2xl mb-4">Change email</h1>
 				<p class="text-lg">You will be sent a confirmation email.</p>
@@ -112,7 +112,7 @@ export default function AccountSettingsForm({ user }: Props) {
 							type="email"
 							name="email"
 							placeholder={user?.email || 'Email'}
-							class="px-3 py-2 rounded text-lg bg-violet-100 text-violet-700 placeholder:(text-violet-300) focus-visible:(outline outline-violet-300)"
+							class="px-3 py-2 rounded text-lg bg-violet-100 text-violet-700 placeholder:text-violet-300 focus-visible:outline outline-violet-300"
 							required
 						/>
 					</div>
@@ -136,7 +136,7 @@ export default function AccountSettingsForm({ user }: Props) {
 			</dialog>
 			<dialog
 				ref={passwordDialogRef}
-				class="open:(p-8 pb-4 flex flex-col rounded-lg shadow-xl w-full max-w-md) backdrop:(bg-white/20 backdrop-blur-md)"
+				class="open:p-8 open:pb-4 open:flex open:flex-col open:rounded-lg open:shadow-xl open:w-full open:max-w-md backdrop:bg-white/20 backdrop-blur-md"
 			>
 				<h1 class="text-2xl mb-4">Update password</h1>
 				<p class="text-lg">
@@ -149,7 +149,7 @@ export default function AccountSettingsForm({ user }: Props) {
 							name="old-password"
 							placeholder="Current password"
 							minLength={6}
-							class="px-3 py-2 rounded text-lg bg-purple-100 text-purple-700 placeholder:(text-purple-300) focus-visible:(outline outline-purple-300)"
+							class="px-3 py-2 rounded text-lg bg-purple-100 text-purple-700 placeholder:text-purple-300 focus-visible:outline outline-purple-300"
 							required
 						/>
 						<input
@@ -157,7 +157,7 @@ export default function AccountSettingsForm({ user }: Props) {
 							name="password"
 							placeholder="New password"
 							minLength={6}
-							class="px-3 py-2 rounded text-lg bg-purple-100 text-purple-700 placeholder:(text-purple-300) focus-visible:(outline outline-purple-300)"
+							class="px-3 py-2 rounded text-lg bg-purple-100 text-purple-700 placeholder:text-purple-300 focus-visible:outline outline-purple-300"
 							required
 						/>
 					</div>
@@ -181,7 +181,7 @@ export default function AccountSettingsForm({ user }: Props) {
 			</dialog>
 			<dialog
 				ref={deletingDialogRef}
-				class="open:(p-8 pb-4 flex flex-col rounded-lg shadow-xl w-full max-w-md) backdrop:(bg-white/20 backdrop-blur-md)"
+				class="open:p-8 open:pb-4 open:flex open:flex-col open:rounded-lg open:shadow-xl open:w-full open:max-w-md backdrop:bg-white/20 backdrop-blur-md"
 			>
 				<h1 class="text-2xl mb-4">Delete account</h1>
 				<p class="text-lg">
@@ -194,7 +194,7 @@ export default function AccountSettingsForm({ user }: Props) {
 							type="password"
 							name="delete-account-password"
 							placeholder="Password"
-							class="px-3 py-2 rounded text-lg bg-red-100 text-red-700 placeholder:(text-red-300) focus-visible:(outline outline-red-300)"
+							class="px-3 py-2 rounded text-lg bg-red-100 text-red-700 placeholder:text-red-300 focus-visible:outline outline-red-300"
 							required
 						/>
 						<div class="flex items-center">
