@@ -15,6 +15,7 @@ export default function AccountSettingsForm({ user }: Props) {
 	const emailDialogRef = useRef<HTMLDialogElement>(null)
 	const passwordDialogRef = useRef<HTMLDialogElement>(null)
 	const deletingDialogRef = useRef<HTMLDialogElement>(null)
+	const logoutDialogRef = useRef<HTMLDialogElement>(null)
 
 	return (
 		<>
@@ -55,12 +56,15 @@ export default function AccountSettingsForm({ user }: Props) {
 					<IconTrashX class="w-8 h-8 text-rose-400" />
 					Delete account
 				</button>
-				<a href="api/log-out">
-					<button class="w-full flex flex-col items-center justify-center gap-4 p-4 py-8 text-lg text-stone-500 rounded-lg bg-stone-100/50 border-2 border-stone-300 hover:(bg-stone-100) active:scale-95 transition-transform">
-						<IconLock class="w-8 h-8 text-stone-400" />
-						Log out
-					</button>
-				</a>
+				<button
+					onClick={() =>
+						setTimeout(() => logoutDialogRef.current?.showModal(), 150)
+					}
+					class="w-full flex flex-col items-center justify-center gap-4 p-4 py-8 text-lg text-stone-500 rounded-lg bg-stone-100/50 border-2 border-stone-300 hover:(bg-stone-100) active:scale-95 transition-transform"
+				>
+					<IconLock class="w-8 h-8 text-stone-400" />
+					Log out
+				</button>
 			</main>
 			<dialog
 				ref={usernameDialogRef}
@@ -244,6 +248,31 @@ export default function AccountSettingsForm({ user }: Props) {
 						>
 							<IconTrashX class="w-6 h-6" />
 							Delete it
+						</button>
+					</footer>
+				</form>
+			</dialog>
+			<dialog
+				ref={logoutDialogRef}
+				class="open:(p-8 pb-4 flex flex-col rounded-lg shadow-xl w-full max-w-md) backdrop:(bg-white/20 backdrop-blur-md)"
+			>
+				<h1 class="text-2xl mb-4">Log out?</h1>
+				<p class="text-lg">Please confirm you want to log out.</p>
+				<form method="get" action="api/log-out" class="mt-6">
+					<footer class="flex flex-row justify-end gap-2 mt-4 -mr-3">
+						<button
+							type="reset"
+							class="px-3 py-2 rounded text-lg active:scale-95 transition-transform"
+							onClick={() => logoutDialogRef.current?.close()}
+						>
+							Cancel
+						</button>
+						<button
+							type="submit"
+							class="px-3 py-2 rounded text-lg flex flex-row items-center gap-2 hover:bg-gradient-to-r from-stone-100 via-neutral-100 to-zinc-100 hover:shadow-next hover:shadow-violet-200/40 active:scale-95 transition-transform"
+						>
+							<IconLock class="w-6 h-6" />
+							Log out
 						</button>
 					</footer>
 				</form>
