@@ -2,8 +2,8 @@ import { Handlers, PageProps } from '$fresh/server.ts'
 import IconWriting from 'icons/writing.tsx'
 
 import { Layout } from '../components/layout.tsx'
-import PostCard, { Post } from '../components/post-card.tsx'
-import { supabase } from '../lib/supabase.ts'
+import PostCard from '../components/post-card.tsx'
+import { Post, getPosts } from '../utils/posts.ts'
 import { ServerState } from './_middleware.ts'
 
 interface PageData {
@@ -13,20 +13,8 @@ interface PageData {
 
 export const handler: Handlers = {
 	async GET(_, ctx) {
-		try {
-			const { data: posts, error } = await supabase
-				.from('posts')
-				.select('*')
-				.range(0, 25)
-				.order('created_at', { ascending: false })
-
-			if (error) throw error
-
-			return ctx.render({ posts, state: ctx.state })
-		} catch (error) {
-			console.error('While fetching posts:', error)
-			return ctx.render({ posts: [], state: ctx.state })
-		}
+		const posts = await getPosts()
+		return ctx.render({ posts, state: ctx.state })
 	},
 }
 

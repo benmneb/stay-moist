@@ -1,22 +1,16 @@
 import VoteButtons from '../islands/vote-buttons.tsx'
+import { Post } from '../utils/posts.ts'
 
-export interface Post {
-	id: string
-	title: string
-	created_at: Date
-	body: string
-	user_id: string
-	author?: string
-}
-
-interface Props {
+export default function PostCard({
+	post,
+	index,
+	length,
+}: {
 	post: Post
 	index: number
 	length: number
-}
-
-export default function PostCard({ post, index, length }: Props) {
-	const pubDate = new Date(post.created_at).toLocaleDateString('en-us', {
+}) {
+	const pubDate = new Date(post.publishedAt).toLocaleDateString('en-us', {
 		year: 'numeric',
 		month: 'long',
 		day: 'numeric',
@@ -28,18 +22,16 @@ export default function PostCard({ post, index, length }: Props) {
 				index === length - 1 && 'mb-0'
 			}`}
 		>
-			<a class="sm:col-span-2" href={`/${post.id}`}>
+			<a class="sm:col-span-2" href={`/${post.slug}`}>
 				<h3 class="text(3xl gray-900) font-bold mb-2">{post.title}</h3>
 				<time
-					dateTime={new Date(post.created_at).toISOString()}
+					dateTime={new Date(post.publishedAt).toISOString()}
 					title={pubDate}
 					class="text-gray-300 font-bold"
 				>
 					{pubDate}
 				</time>
-				<p class="mt-4 text-gray-500 line-clamp-1">
-					{post.body.substring(0, 280)}
-				</p>
+				<div class="mt-4 text-gray-500">{post.snippet}</div>
 			</a>
 			<div class="basis-0">
 				<VoteButtons />

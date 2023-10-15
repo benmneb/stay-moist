@@ -1,15 +1,10 @@
 import IconSend from 'icons/send.tsx'
 import IconTrashX from 'icons/trash-x.tsx'
-import { useEffect, useRef, useState } from 'preact/hooks'
-import { AddPostPageProps } from '../routes/add-post.tsx'
+import { useRef, useState } from 'preact/hooks'
 
-interface Props {
-	content?: AddPostPageProps['content']
-}
-
-export default function AddPost({ content }: Props) {
-	const [titleText, setTitleText] = useState<string>(content?.title || '')
-	const [bodyText, setBodyText] = useState<string>(content?.body || '')
+export default function AddPost() {
+	const [titleText, setTitleText] = useState<string>('')
+	const [bodyText, setBodyText] = useState<string>('')
 	const textAreaRef = useRef<HTMLTextAreaElement>(null)
 
 	const currentDate = new Date().toLocaleDateString('en-us', {
@@ -28,6 +23,13 @@ export default function AddPost({ content }: Props) {
 		}
 	}
 
+	function handleSubmit() {
+		console.log('title', titleText)
+		console.log('body', bodyText)
+
+		// TODO: post to supabase...
+	}
+
 	function textAreaAdjust() {
 		if (!textAreaRef.current) return
 
@@ -35,10 +37,6 @@ export default function AddPost({ content }: Props) {
 		textAreaRef.current.style.height =
 			25 + textAreaRef.current.scrollHeight + 'px' // TODO: get actual line height
 	}
-
-	useEffect(() => {
-		if (content?.body) textAreaAdjust()
-	}, [])
 
 	return (
 		<form method="post">
@@ -55,6 +53,7 @@ export default function AddPost({ content }: Props) {
 					<button
 						type="submit"
 						class="px-3 py-2 flex gap-2 self-start rounded focus:outline-none hover:bg-gradient-to-r from-indigo-100 via-violet-100 to-purple-100 hover:shadow-next hover:shadow-violet-200/40 active:scale-95 transition-transform"
+						onClick={handleSubmit}
 					>
 						<IconSend class="w-6 h-6" />
 						Post it!
