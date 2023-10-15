@@ -1,16 +1,37 @@
 import { Handlers, PageProps } from '$fresh/server.ts'
-import { render } from '$gfm'
 import IconArrowBack from 'icons/arrow-back.tsx'
 import { Layout } from '../components/layout.tsx'
-import { Post } from '../utils/posts.ts'
+import { Post } from '../components/post-card.tsx'
+import { supabase } from '../lib/supabase.ts'
 import { ServerState } from './_middleware.ts'
-import { getPost } from '/utils/posts.ts'
 
 export const handler: Handlers = {
 	async GET(_req, ctx) {
-		const post = await getPost(ctx.params.post)
-		if (post === null) return ctx.renderNotFound()
-		return ctx.render({ post, state: ctx.state })
+		try {
+			const { data: post, error } = await supabase
+				.from('posts')
+				.select()
+				.eq('id', ctx?.params?.post)
+				.single()
+
+			if (error) throw error
+
+			const { data: author, error: authorError } = await supabase
+				.from('user_names')
+				.select('name')
+				.eq('user_id', post.user_id)
+				.maybeSingle()
+
+			if (authorError) throw authorError
+
+			return ctx.render({
+				post: { ...post, author: author?.name },
+				state: ctx.state,
+			})
+		} catch (error) {
+			console.error('While fetching post:', error)
+			return ctx.renderNotFound() // TODO: WTF is this
+		}
 	},
 }
 
@@ -27,22 +48,24 @@ export default function PostPage({ data }: PageProps<PostPageProps>) {
 			<main class="max-w-screen-md px-4 pt-16 mx-auto">
 				<h1 class="text-5xl font-bold">{post.title}</h1>
 				<time class="flex my-4 text-gray-300 font-bold">
-					{new Date(post.publishedAt).toLocaleDateString('en-us', {
+					{new Date(post.created_at).toLocaleDateString('en-us', {
 						year: 'numeric',
 						month: 'long',
 						day: 'numeric',
 					})}
 				</time>
-				<div
-					class="mt-8 markdown-body"
-					dangerouslySetInnerHTML={{ __html: render(post.content) }}
-				/>
+				<div class="my-8 whitespace-pre-wrap">{post.body}</div>
+				<footer>
+					<address rel="author" class="text-gray-300 self-start">
+						{/* // TODO: Make users table etc */}
+						by {post?.author || 'Anonymous'}
+					</address>
+				</footer>
 				<div class="my-12">
 					<a href="/">
 						<button
 							type="button"
-							class="px-3 py-2 rounded border(gray-400 1) hover:bg-gray-200 flex gap-2 active:scale-95 transition-transform"
-							href="/"
+							class="-mx-3 px-3 py-2 rounded hover:bg-gradient-to-r from-indigo-100 via-violet-100 to-purple-100 flex gap-2 hover:shadow-next hover:shadow-violet-200/40 active:scale-95 transition-transform"
 						>
 							<IconArrowBack class="w-6 h-6" />
 							Back to home
